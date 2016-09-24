@@ -1,3 +1,11 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position);
+    });
+}
+
 $( document ).ready(function() {
   var url = window.localStorage.getItem('current-photo')
   
@@ -8,7 +16,9 @@ $( document ).ready(function() {
   $('#take-photo').click(function() {
     navigator.camera.getPicture(function(imageData){
       window.localStorage.setItem('current-photo', "data:image/jpeg;base64," + imageData);
-      setupForm();
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setupForm(position);
+      });
     }, function(){}, {
       destinationType: Camera.DestinationType.DATA_URL
     });  
@@ -44,7 +54,7 @@ $( document ).ready(function() {
         request.setRequestHeader("X-Auth-Token", apiToken);
       },
       // url: "http://10.0.3.2:3000/api/v1/" + permalink + "/items",
-      url: "http://" + subdomain + ".crowdfind.rebased.pl/api/v1/" + permalink + "/items",
+      url: "http://ourapp/api/v1/defects",
       data: form.serialize(),
       dataType: 'json'
     }).done(function(data) {
@@ -112,9 +122,17 @@ $( document ).ready(function() {
     }
   } 
 
-  function setupForm() {
+  function setupForm(position) {
+    var lat, lng;
     var image = document.getElementById('item-preview');
     var imageData = window.localStorage.getItem('current-photo')
+
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
+
+    document.getElementById('lat').value = lat;
+    document.getElementById('lng').value = lng;
+
     image.src = imageData;
     var categories = [{id: 'street_light', name: 'Street lights'}, {id: 'road', name: 'Roads'}] //JSON.parse(window.localStorage.getItem('categories'));
     $('#image-data').val(imageData);

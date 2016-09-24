@@ -126,7 +126,7 @@ h1 {
   background-size: cover;
 }
 
-#item-form-page button {
+#item-form-page button, #back-to-camera {
   border: none !important;
   border-radius: 0 !important;
   position: absolute;
@@ -156,13 +156,14 @@ button.submit-issue {
   background: url('../img/nextbutton.png') no-repeat center;
 }
 
-button.back-to-camera {
+#back-to-camera {
   margin: 0;
   background-color: #e4e4e4 !important;
   left: 0;
   right: initial;
   width: 30%;
   background: url('../img/cancelbutton.png') no-repeat center;
+  background-size: 100%;
 }
 
 #item-preview {

@@ -7,7 +7,9 @@ $( document ).ready(function() {
   //   $.mobile.navigate("#login");
   // }
 
-  $('#welcome').click(function() {
+
+
+  $('#welcome, #back-to-camera').click(function() {
     navigator.camera.getPicture(function(imageData){
       window.localStorage.setItem('current-photo', "data:image/jpeg;base64," + imageData);
       navigator.geolocation.getCurrentPosition(function(position) {

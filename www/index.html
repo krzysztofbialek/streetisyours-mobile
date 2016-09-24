@@ -58,18 +58,18 @@
             <div role="main" class="ui-content">
                 <div class='error'></div>
                 <form id='add-item'>
-                    <label for="name">Name:</label>
-                    <input type="text" name="[item]name" value="" placeholder="enter item name" />
-                    <select name="[item]category_id" id="category-preview">
+                    <label for="description">Issue description:</label>
+                    <input type="text" name="[issue]description" value="" placeholder="enter description"/>
+                    <select name="[issue]category_id" id="category-preview">
                         <option disabled selected> -- select category -- </option>
                     </select>
-                    <input name="lat" id="lat" type="hidden">
-                    <input name="lng" id="lng" type="hidden">
-                    <input type="text" name="[item]image" value="" id="image-data"/>
+                    <input name="[issue]latitude" id="lat" type="hidden">
+                    <input name="[issue]longitude" id="lng" type="hidden">
+                    <input type="text" name="[issue]image" value="" id="image-data"/>
 
                     <img src='' id='item-preview'>
                     <br/>
-                    <button type='submit'>Add item</button>
+                    <button type='submit'>Add issue</button>
                 </form>
             </div><!-- /content -->
 

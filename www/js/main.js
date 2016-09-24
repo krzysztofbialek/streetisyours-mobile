@@ -1,3 +1,4 @@
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -7,6 +8,8 @@ function onDeviceReady() {
 }
 
 $( document ).ready(function() {
+  const backendUrl = "http://street-is-yours.herokuapp.com/api";
+
   var url = window.localStorage.getItem('current-photo')
   
   // if(!window.localStorage.getItem("api-token")) {
@@ -43,9 +46,8 @@ $( document ).ready(function() {
   $('form#add-item').on('submit', function(event) {
     event.preventDefault();
     var form = $(this);
-    var subdomain = window.localStorage.getItem('subdomain')
-    var permalink = window.localStorage.getItem('permalink')
     var apiToken = window.localStorage.getItem('api-token')
+
     $.mobile.loading('show');
 
     $.ajax({
@@ -54,7 +56,7 @@ $( document ).ready(function() {
         request.setRequestHeader("X-Auth-Token", apiToken);
       },
       // url: "http://10.0.3.2:3000/api/v1/" + permalink + "/items",
-      url: "http://ourapp/api/v1/defects",
+      url: backendUrl + '/issues',
       data: form.serialize(),
       dataType: 'json'
     }).done(function(data) {
@@ -87,7 +89,7 @@ $( document ).ready(function() {
     $.ajax({
       type: "POST",
       // url: "http://10.0.3.2:3000/api/v1/sessions",
-      url: "http://" + subdomain + ".crowdfind.rebased.pl/api/v1/sessions",
+      url: backendUrl,
       data: form.serialize(),
       dataType: 'json',
     }).done(function(data) {
@@ -107,8 +109,6 @@ $( document ).ready(function() {
 
   function storeData(data) {
     window.localStorage.setItem('api-token', data.user.api_token);
-    window.localStorage.setItem('subdomain', data.user.account.subdomain);
-    window.localStorage.setItem('permalink', data.user.venues[0].permalink);
     window.localStorage.setItem('categories', JSON.stringify(data.meta.categories));
   }
 

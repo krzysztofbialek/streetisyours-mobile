@@ -99,8 +99,18 @@ h1 {
     padding: 20px;
 }
 
-.notice {
-    border: 2px green solid;
+#item-added-notice {
+  display: none;
+  background-color: #69BDF5;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  width: 200px;
+  height: 60px;
+  transform: translateY(-50%);
+  left: 50%;
+  margin-left: -100px;
+  text-align: center;
 }
 
 #logo {
@@ -109,12 +119,89 @@ h1 {
     padding: 30px;
 }
 
+#item-form-page {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#item-form-page button {
+  border: none !important;
+  border-radius: 0 !important;
+  position: absolute;
+  bottom: 0px;
+  margin: 0;
+  height: 40px;
+  background-size: 100%;
+}
+
+#item-form-page textarea {
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
+  color: rgba(0,0,0,0.6) !important;
+  font-weight: 100;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: rgba(0,0,0,0.6) !important;
+  font-weight: 100;
+}
+
+button.submit-issue {
+  background-color: #69BDF5 !important;
+  right: 0;
+  width: 70%;
+  background: url('../img/nextbutton.png') no-repeat center;
+}
+
+button.back-to-camera {
+  margin: 0;
+  background-color: #e4e4e4 !important;
+  left: 0;
+  right: initial;
+  width: 30%;
+  background: url('../img/cancelbutton.png') no-repeat center;
+}
+
 #item-preview {
     width: 100%;
 }
 
 #image-data {
     display: none;
+}
+
+#add-item {
+  background-color: rgba(255,255,255,0.6);
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  height: 180px;
+  transform: translateY(-50%);
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+  box-sizing: border-box;
+}
+
+#logo-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(../img/homebutton-cut.png) no-repeat center center;
+  background-size: 50%;
+}
+
+#welcome {
+  background: url('../img/wallpaper.jpg') center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .header {

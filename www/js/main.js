@@ -1,12 +1,3 @@
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.log(position);
-    });
-}
-
 $( document ).ready(function() {
   const backendUrl = "http://street-is-yours.herokuapp.com/api";
 
@@ -16,14 +7,17 @@ $( document ).ready(function() {
   //   $.mobile.navigate("#login");
   // }
 
-  $('#take-photo').click(function() {
+  $('#welcome').click(function() {
     navigator.camera.getPicture(function(imageData){
       window.localStorage.setItem('current-photo', "data:image/jpeg;base64," + imageData);
       navigator.geolocation.getCurrentPosition(function(position) {
         setupForm(position);
       });
     }, function(){}, {
-      destinationType: Camera.DestinationType.DATA_URL
+      destinationType: Camera.DestinationType.DATA_URL,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 720,
+      correctOrientation: true
     });  
   })
 
@@ -61,14 +55,16 @@ $( document ).ready(function() {
       dataType: 'json'
     }).done(function(data) {
       $.mobile.loading('hide');
-      $.mobile.navigate("#welcome");
-      $('.notice').text('Item added');
-      $('.notice').show();
-      setTimeout(function() {
-        $('.notice').hide();        
-      }, 3000);
+
+      $('#item-added-notice').show();
+      $('form#add-item').hide();
       $('form#add-item')[0].reset();
       $('.error').hide();
+
+      setTimeout(function() {
+        $.mobile.navigate("#welcome");
+        $('#item-added-notice').hide();
+      }, 3000);
     }).fail(function(error) {
       $.mobile.loading('hide');
       console.log(error)
@@ -125,7 +121,8 @@ $( document ).ready(function() {
   function setupForm(position) {
     var lat, lng;
     var image = document.getElementById('item-preview');
-    var imageData = window.localStorage.getItem('current-photo')
+    var issueFormPage = document.getElementById('item-form-page');
+    var imageData = window.localStorage.getItem('current-photo');
 
     lat = position.coords.latitude;
     lng = position.coords.longitude;
@@ -133,7 +130,8 @@ $( document ).ready(function() {
     document.getElementById('lat').value = lat;
     document.getElementById('lng').value = lng;
 
-    image.src = imageData;
+    issueFormPage.style.background = "url(" + imageData + ") no-repeat center center fixed";  
+    // image.src = imageData;
     var categories = [{id: 'street_light', name: 'Street lights'}, {id: 'road', name: 'Roads'}] //JSON.parse(window.localStorage.getItem('categories'));
     $('#image-data').val(imageData);
 
@@ -141,6 +139,8 @@ $( document ).ready(function() {
       $('#category-preview').append("<option value='"+categories[i].id+"'>"+categories[i].name+"</option>");
     }
 
+    // show form if it was previously hidden
+    $('form#add-item').show();
     $.mobile.navigate("#item-form-page");
   }
 });

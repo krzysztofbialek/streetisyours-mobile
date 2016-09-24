@@ -16,22 +16,8 @@
     <body>
         <!-- Start of first page -->
         <div data-role="page" id="welcome" data-theme="b">
-
-            <div class='header' data-role="header" data-theme="b">
-                <img id="logo" src="img/cf-logo-white.png"/>
-            </div><!-- /header -->
-
-            <div role="main" class="ui-content">
-                <div class='notice'></div>
-                <div class="app">
-                    <a href="#add-item"><button>Add item</button></a>
-                    <button class='clear-cookie'>Logout</button>
-                </div>
-            </div><!-- /content -->
-
-            <div data-role="footer" data-position="fixed" data-theme="b">
-                <h4>Street is yours 2016</h4>
-            </div><!-- /footer -->
+            <div id='logo-button'>
+            </div>
         </div><!-- /page -->
 
         <!-- Start of second page -->
@@ -51,28 +37,29 @@
         </div><!-- /page -->
 
         <div data-role="page" id="item-form-page" data-theme="b">
-            <div class='header' data-role="header" ata-add-back-btn="true">
-                <h1>Add item</h1>
-            </div><!-- /header -->
-
             <div role="main" class="ui-content">
                 <div class='error'></div>
                 <form id='add-item'>
-                    <label for="description">Issue description:</label>
-                    <input type="text" name="[issue]description" value="" placeholder="enter description"/>
-                    <select name="[issue]category_id" id="category-preview">
+                    <textarea name="[issue]description" value="" placeholder="Enter description"></textarea>
+                    <!-- <select name="[issue]category" id="category-preview">
                         <option disabled selected> -- select category -- </option>
-                    </select>
+                    </select> -->
                     <input name="[issue]latitude" id="lat" type="hidden">
                     <input name="[issue]longitude" id="lng" type="hidden">
-                    <input type="text" name="[issue]image" value="" id="image-data"/>
+                    <input type="hidden" name="[issue]image" value="" id="image-data"/>
 
-                    <img src='' id='item-preview'>
                     <br/>
-                    <button type='submit'>Add issue</button>
+                    <button class='back-to-camera'/>
+                    <button class='submit-issue' type='submit'/>
                 </form>
             </div><!-- /content -->
 
+            <div id='item-added-notice'>
+                Added!</br>
+                The street is truly yours</br>
+                Thank you for being good citizen!
+            </div>
+            
             <div id="footer" data-role="footer" data-position="fixed">
                 <h4>Street is yours 2016</h4>
             </div><!-- /footer -->

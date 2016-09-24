@@ -116,7 +116,7 @@ $( document ).ready(function() {
     var image = document.getElementById('item-preview');
     var imageData = window.localStorage.getItem('current-photo')
     image.src = imageData;
-    var categories = ['defect'] //JSON.parse(window.localStorage.getItem('categories'));
+    var categories = [{id: 'street_light', name: 'Street lights'}, {id: 'road', name: 'Roads'}] //JSON.parse(window.localStorage.getItem('categories'));
     $('#image-data').val(imageData);
 
     for(i=0;i<categories.length;i++){

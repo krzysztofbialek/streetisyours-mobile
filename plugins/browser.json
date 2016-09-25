@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
         "cordova-plugin-chrome-apps-storage": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
@@ -17,6 +14,12 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-ios-camera-permissions": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },

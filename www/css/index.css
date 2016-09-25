@@ -246,3 +246,25 @@ a {
   height: 160px;
   width: 25%;
 }
+
+#nearby-issues li {
+  margin: 0;
+  padding: 0;
+  height: 160px;
+  width: 33%;
+  position: relative;
+}
+
+#nearby-issues li .ok {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  right: 10px;
+  bottom: 10px;
+  background: url('../img/ok.png') no-repeat 47% center;
+  background-size: cover;
+}

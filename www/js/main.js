@@ -17,10 +17,11 @@ $( document ).ready(function() {
         console.log(position);
 
         // Show latest photos
-        $.when( $.ajax({url: backendUrl + '/issues?latitude=' + position.coords.latitude + '&' + 'longitude=' + position.coords.longitude + '&limit=4' }) ).then(function( payload, textStatus, jqXHR ) {
+        $.when( $.ajax({url: backendUrl + '/issues?latitude=' + position.coords.latitude + '&' + 'longitude=' + position.coords.longitude + '&limit=3' }) ).then(function( payload, textStatus, jqXHR ) {
+          $('#nearby-issues').show();
           $('#nearby-issues ul').html('');
           $.each(payload.data, function( index, issue ) {
-            $('#nearby-issues ul').append('<li class="issue" style="background: url(' + issue.attributes.image  + ') center center; background-size: cover;"></li>')
+            $('#nearby-issues ul').append('<li class="issue" style="background: url(' + issue.attributes.image  + ') no-repeat center center; background-size: cover;"><span class="ok"></span></li>')
           });
         });
       });
@@ -32,6 +33,11 @@ $( document ).ready(function() {
       correctOrientation: true
     });  
   })
+
+  $('#nearby-issues').on('click', function() {
+    $.mobile.navigate("#welcome");
+    $('#nearby-issues').hide();
+  });
 
   $('.clear-cookie').click(function() {
     window.localStorage.clear();

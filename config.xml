@@ -22,5 +22,10 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <allow-navigation href="*" />
     </platform>
+    <plugin name="cordova-plugin-camera" spec="~2.3.0">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="Capture issue pic" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Find issue pic" />
+    </plugin>
 </widget>

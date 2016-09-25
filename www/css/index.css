@@ -212,3 +212,37 @@ button.submit-issue {
 a {
     text-decoration: none;
 }
+
+#nearby-issues {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+}
+
+#nearby-issues h3 {
+  background-color: #69BDF5 !important;
+  width: 100%;
+  color: #FFF;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#nearby-issues ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: table;
+}
+
+#nearby-issues li {
+  margin: 0;
+  padding: 0;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#nearby-issues li img {
+  max-width: 100%;
+}

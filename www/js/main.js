@@ -14,7 +14,17 @@ $( document ).ready(function() {
       window.localStorage.setItem('current-photo', "data:image/jpeg;base64," + imageData);
       navigator.geolocation.getCurrentPosition(function(position) {
         setupForm(position);
+        console.log(position);
+
+        // Show latest photos
+        $.when( $.ajax({url: backendUrl + '/issues?latitude=' + position.coords.latitude + '&' + 'longitude=' + position.coords.longitude}) ).then(function( payload, textStatus, jqXHR ) {
+          $.each(payload.data, function( index, issue ) {
+            $('#nearby-issues ul').append("<li class='issue'><img src=" + issue.attributes.image + "></li>")
+          });
+        });
       });
+
+
     }, function(){}, {
       destinationType: Camera.DestinationType.DATA_URL,
       encodingType: Camera.EncodingType.JPEG,

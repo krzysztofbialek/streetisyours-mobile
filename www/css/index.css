@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -36,7 +37,7 @@ body {
         color-stop(0.51, #E4E4E4)
     );
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: 'Lato', sans-serif !important;
     font-size:12px;
     height:100%;
     margin:0px;
@@ -111,6 +112,7 @@ h1 {
   left: 50%;
   margin-left: -100px;
   text-align: center;
+  text-shadow: none !important;
 }
 
 #logo {
@@ -120,10 +122,10 @@ h1 {
 }
 
 #item-form-page {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: 100% 100% !important;
+  -moz-background-size: 100% 100% !important;
+  -o-background-size: 100% 100% !important;
+  background-size: 100% 100% !important;
 }
 
 #item-form-page button, #back-to-camera {
@@ -140,8 +142,11 @@ h1 {
   background: transparent;
   border: none !important;
   box-shadow: none !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
   color: rgba(0,0,0,0.6) !important;
-  font-weight: 100;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif !important;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -198,7 +203,7 @@ button.submit-issue {
 }
 
 #welcome {
-  background: url('../img/wallpaper.jpg') center center no-repeat;
+  background: url('../img/wallpaper-2.png') center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -218,6 +223,7 @@ a {
   bottom: 30px;
   left: 0;
   right: 0;
+  text-shadow: none;
 }
 
 #nearby-issues h3 {

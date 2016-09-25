@@ -28,6 +28,7 @@ $( document ).ready(function() {
 
     }, function(){}, {
       destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: 1,
       encodingType: Camera.EncodingType.JPEG,
       targetWidth: 720,
       correctOrientation: true
@@ -148,7 +149,7 @@ $( document ).ready(function() {
     document.getElementById('lat').value = lat;
     document.getElementById('lng').value = lng;
 
-    issueFormPage.style.background = "url(" + imageData + ") no-repeat center center fixed";  
+    issueFormPage.style.background = "url(" + imageData + ") no-repeat center";  
     // image.src = imageData;
     var categories = [{id: 'street_light', name: 'Street lights'}, {id: 'road', name: 'Roads'}] //JSON.parse(window.localStorage.getItem('categories'));
     $('#image-data').val(imageData);

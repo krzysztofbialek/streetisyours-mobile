@@ -17,13 +17,13 @@ $( document ).ready(function() {
         console.log(position);
 
         // Show latest photos
-        $.when( $.ajax({url: backendUrl + '/issues?latitude=' + position.coords.latitude + '&' + 'longitude=' + position.coords.longitude}) ).then(function( payload, textStatus, jqXHR ) {
+        $.when( $.ajax({url: backendUrl + '/issues?latitude=' + position.coords.latitude + '&' + 'longitude=' + position.coords.longitude + '&limit=4' }) ).then(function( payload, textStatus, jqXHR ) {
+          $('#nearby-issues ul').html('');
           $.each(payload.data, function( index, issue ) {
-            $('#nearby-issues ul').append("<li class='issue'><img src=" + issue.attributes.image + "></li>")
+            $('#nearby-issues ul').append('<li class="issue" style="background: url(' + issue.attributes.image  + ') center center; background-size: cover;"></li>')
           });
         });
       });
-
 
     }, function(){}, {
       destinationType: Camera.DestinationType.DATA_URL,

@@ -112,6 +112,7 @@ h1 {
   left: 50%;
   margin-left: -100px;
   text-align: center;
+  text-shadow: none !important;
 }
 
 #logo {
@@ -142,6 +143,7 @@ h1 {
   border: none !important;
   box-shadow: none !important;
   text-shadow: none !important;
+  text-decoration: none !important;
   color: rgba(0,0,0,0.6) !important;
   font-size: 16px;
   font-family: 'Lato', sans-serif !important;
@@ -201,7 +203,7 @@ button.submit-issue {
 }
 
 #welcome {
-  background: url('../img/wallpaper.jpg') center center no-repeat;
+  background: url('../img/wallpaper-2.png') center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

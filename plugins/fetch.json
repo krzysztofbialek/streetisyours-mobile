@@ -45,6 +45,9 @@
             "id": "cordova-plugin-camera"
         },
         "is_top_level": true,
-        "variables": {}
+        "variables": {
+            "CAMERA_USAGE_DESCRIPTION": "your usage message",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": "Hodor"
+        }
     }
 }

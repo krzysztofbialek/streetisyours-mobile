@@ -14,14 +14,31 @@ $( document ).ready(function() {
       window.localStorage.setItem('current-photo', "data:image/jpeg;base64," + imageData);
       navigator.geolocation.getCurrentPosition(function(position) {
         setupForm(position);
+        console.log(position);
+
+        // Show latest photos
+        $.when( $.ajax({url: backendUrl + '/issues?latitude=' + position.coords.latitude + '&' + 'longitude=' + position.coords.longitude + '&limit=3' }) ).then(function( payload, textStatus, jqXHR ) {
+          $('#nearby-issues').show();
+          $('#nearby-issues ul').html('');
+          $.each(payload.data, function( index, issue ) {
+            $('#nearby-issues ul').append('<li class="issue" style="background: url(' + issue.attributes.image  + ') no-repeat center center; background-size: cover;"><span class="ok"></span></li>')
+          });
+        });
       });
+
     }, function(){}, {
       destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: 1,
       encodingType: Camera.EncodingType.JPEG,
       targetWidth: 720,
       correctOrientation: true
     });  
   })
+
+  $('#nearby-issues').on('click', function() {
+    $.mobile.navigate("#welcome");
+    $('#nearby-issues').hide();
+  });
 
   $('.clear-cookie').click(function() {
     window.localStorage.clear();
@@ -132,7 +149,7 @@ $( document ).ready(function() {
     document.getElementById('lat').value = lat;
     document.getElementById('lng').value = lng;
 
-    issueFormPage.style.background = "url(" + imageData + ") no-repeat center center fixed";  
+    issueFormPage.style.background = "url(" + imageData + ") no-repeat center";  
     // image.src = imageData;
     var categories = [{id: 'street_light', name: 'Street lights'}, {id: 'road', name: 'Roads'}] //JSON.parse(window.localStorage.getItem('categories'));
     $('#image-data').val(imageData);
